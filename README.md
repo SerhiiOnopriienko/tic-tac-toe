@@ -4,4 +4,4 @@ npm install
 npm run dev
 
 The app is hosted on github Pages:
-link will be provided later
+https://serhiionopriienko.github.io/tic-tac-toe/
