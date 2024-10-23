@@ -4,7 +4,6 @@
   align-items: center;
   width: 100vw;
   border-top: 1px solid #262626;
-  margin-bottom: 20px;
   @media (min-width: 720px) {
     flex-direction: row;
     justify-content: space-around;
@@ -19,6 +18,7 @@
   @media (min-width: 720px) {
     width: 50vw;
     height: 100vh;
+    justify-content: space-between;
   }
 }
 
@@ -42,6 +42,7 @@
   background-color: #313131;
   position: relative;
   width: fit-content;
+  border-radius: 10px;
 }
 
 .board :nth-child(1),

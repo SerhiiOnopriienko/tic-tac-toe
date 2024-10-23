@@ -4,6 +4,7 @@ import { resetGame } from "../store/reducers/gameSlice";
 import Square from "./Square";
 import styles from "../styles/game.module.css";
 import { renderWinningLine } from "../utils/renderWinningLine";
+import Chat from "./Chat";
 
 const Game = () => {
   const { xIsNext, winner, gameStatus, winningLine } = useSelector(
@@ -34,6 +35,7 @@ const Game = () => {
           {Array.from({ length: 9 }).map((_, i) => Square(i, false))}
           {renderWinningLine(winningLine)}
         </div>
+        <Chat currentPlayer="Player 1" />
       </div>
 
       <div className={styles.player}>
@@ -46,6 +48,7 @@ const Game = () => {
           {Array.from({ length: 9 }).map((_, i) => Square(i, true))}
           {renderWinningLine(winningLine)}
         </div>
+        <Chat currentPlayer="Player 2" />
       </div>
     </div>
   );

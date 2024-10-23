@@ -1,14 +1,17 @@
 import styles from "../styles/header.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { resetScore } from "../store/reducers/gameSlice";
+import { resetMessages } from "../store/reducers/chatSlice";
 
 const Header = () => {
   const { score } = useSelector((state) => state.game);
+
   const dispatch = useDispatch();
 
   //fully resets game
   const resetGameClick = () => {
     dispatch(resetScore());
+    dispatch(resetMessages());
   };
 
   return (

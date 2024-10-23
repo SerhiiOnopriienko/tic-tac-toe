@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import { store } from "./store/reducers/store.jsx";
+import { store } from "./store/store.jsx";
 import "./styles/generalStyles.css";
 import Header from "./components/Header.jsx";
 import Game from "./components/Game";
