@@ -4,6 +4,7 @@
   align-items: center;
   width: 100vw;
   border-top: 1px solid #262626;
+  margin-bottom: 20px;
   @media (min-width: 720px) {
     flex-direction: row;
     justify-content: space-around;
@@ -11,7 +12,20 @@
 }
 
 .player {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 720px) {
+    width: 50vw;
+    height: 100vh;
+  }
+}
+
+.player:first-child {
+  @media (min-width: 720px) {
+    border-right: 1px solid #262626;
+  }
 }
 
 .player p {
