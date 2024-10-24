@@ -7,9 +7,10 @@ import { renderWinningLine } from "../utils/renderWinningLine";
 import Chat from "./Chat";
 
 const Game = () => {
-  const { xIsNext, winner, gameStatus, winningLine } = useSelector(
+  const { xIsNext, winner, gameStatus, winningLine, board } = useSelector(
     (state) => state.game
   );
+  const isFirstMoveMade = board.every((square) => square === null);
 
   const dispatch = useDispatch();
 
@@ -24,12 +25,23 @@ const Game = () => {
   return (
     <div className={styles.gameContainer}>
       <div className={styles.player}>
-        <div>
-          {gameStatus === "ongoing" && xIsNext && <p>Wait your opponent.</p>}
-          {gameStatus === "ongoing" && !xIsNext && <p>Your turn:</p>}
-          {gameStatus === "won" && winner.winner === "O" && <p>You win!</p>}
-          {gameStatus === "won" && winner.winner === "X" && <p>You lost!</p>}
-          {gameStatus === "draw" && <p>Draw!</p>}
+        <div className={styles.infoText}>
+          {gameStatus === "ongoing" && isFirstMoveMade && (
+            <p className={styles.orangeText}>Game started! </p>
+          )}
+          {gameStatus === "ongoing" && xIsNext && (
+            <p className={styles.orangeText}> Wait your opponent.</p>
+          )}
+          {gameStatus === "ongoing" && !xIsNext && (
+            <p className={styles.orangeText}>Your turn:</p>
+          )}
+          {gameStatus === "won" && winner.winner === "O" && (
+            <p className={styles.greenText}>You win!</p>
+          )}
+          {gameStatus === "won" && winner.winner === "X" && (
+            <p className={styles.redText}>You lost!</p>
+          )}
+          {gameStatus === "draw" && <p className={styles.orangeText}>Draw!</p>}
         </div>
         <div className={styles.board}>
           {Array.from({ length: 9 }).map((_, i) => Square(i, false))}
@@ -39,11 +51,24 @@ const Game = () => {
       </div>
 
       <div className={styles.player}>
-        {gameStatus === "ongoing" && !xIsNext && <p>Wait your opponent.</p>}
-        {gameStatus === "ongoing" && xIsNext && <p>Your turn:</p>}
-        {gameStatus === "won" && winner.winner === "X" && <p>You win!</p>}
-        {gameStatus === "won" && winner.winner === "O" && <p>You lost!</p>}
-        {gameStatus === "draw" && <p>Draw!</p>}
+        <div className={styles.infoText}>
+          {gameStatus === "ongoing" && isFirstMoveMade && (
+            <p className={styles.orangeText}>Game started! </p>
+          )}
+          {gameStatus === "ongoing" && !xIsNext && (
+            <p className={styles.orangeText}>Wait your opponent.</p>
+          )}
+          {gameStatus === "ongoing" && xIsNext && (
+            <p className={styles.orangeText}>Your turn:</p>
+          )}
+          {gameStatus === "won" && winner.winner === "X" && (
+            <p className={styles.greenText}>You win!</p>
+          )}
+          {gameStatus === "won" && winner.winner === "O" && (
+            <p className={styles.redText}>You lost!</p>
+          )}
+          {gameStatus === "draw" && <p className={styles.orangeText}>Draw!</p>}
+        </div>
         <div className={styles.board}>
           {Array.from({ length: 9 }).map((_, i) => Square(i, true))}
           {renderWinningLine(winningLine)}

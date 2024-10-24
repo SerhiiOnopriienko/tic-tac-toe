@@ -31,8 +31,31 @@
 .player p {
   margin: 20px 0;
   text-align: center;
-  color: #d68a18;
   font-size: 24px;
+}
+
+.infoText {
+  @media (min-width: 720px) {
+    display: flex;
+  }
+}
+
+.infoText p:first-child {
+  @media (min-width: 720px) {
+    margin-right: 10px;
+  }
+}
+
+.orangeText {
+  color: #d68a18;
+}
+
+.greenText {
+  color: #0d5619;
+}
+
+.redText {
+  color: #a03c1c;
 }
 
 .board {
