@@ -26,7 +26,7 @@ const gameSlice = createSlice({
         state.winner = winner;
         state.gameStatus = "won";
         state.winningLine = winner.winningLine;
-        if (winner === "X") {
+        if (winner.winner === "X") {
           state.score.player2 += 1;
         } else {
           state.score.player1 += 1;
